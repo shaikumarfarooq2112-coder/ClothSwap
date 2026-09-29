@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - ClothSwap</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">ClothSwap</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="listings.html">Browse Clothes</a>
+        <a href="add-clothing.html">List Clothing</a>
+        <a href="swap-requests.html">Swap Requests</a>
+        <a href="swap-value.html">Value Calculator</a>
+        <a href="location.html">📍 Find Nearby</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+</nav>
+
+
+<section class="features">
+
+    <h1>My Dashboard</h1>
+
+    <div class="feature-container">
+
+        <div class="feature-card">
+            <h2>Welcome</h2>
+            <p id="userName">Loading...</p>
+            <p id="userEmail"></p>
+        </div>
+
+        <div class="feature-card">
+            <h2>My Listings</h2>
+            <p id="listingCount">Loading...</p>
+        </div>
+
+        <div class="feature-card">
+            <h2>Swap Requests</h2>
+            <p id="swapCount">Loading...</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

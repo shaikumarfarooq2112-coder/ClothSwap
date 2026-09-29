@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Swap Value Calculator - ClothSwap</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            ClothSwap
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="listings.html">
+                Browse Clothes
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="swap-requests.html">
+                Swap Requests
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- CALCULATOR -->
+    <section class="features">
+
+        <h1>Swap Value Calculator</h1>
+
+        <p>
+            Estimate the swap value of your clothing item.
+        </p>
+
+
+        <div class="feature-card">
+
+            <form id="valueForm">
+
+                <!-- BRAND -->
+                <label for="brand">
+                    Brand
+                </label>
+
+                <select id="brand" required>
+
+                    <option value="">
+                        Select Brand
+                    </option>
+
+                    <option value="Nike">
+                        Nike
+                    </option>
+
+                    <option value="Adidas">
+                        Adidas
+                    </option>
+
+                    <option value="Levi's">
+                        Levi's
+                    </option>
+
+                    <option value="Puma">
+                        Puma
+                    </option>
+
+                    <option value="Zara">
+                        Zara
+                    </option>
+
+                    <option value="H&M">
+                        H&M
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <!-- CATEGORY -->
+                <label for="category">
+                    Category
+                </label>
+
+                <select id="category" required>
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="Jackets">
+                        Jackets
+                    </option>
+
+                    <option value="Dresses">
+                        Dresses
+                    </option>
+
+                    <option value="Sportswear">
+                        Sportswear
+                    </option>
+
+                    <option value="T-Shirts">
+                        T-Shirts
+                    </option>
+
+                    <option value="Shirts">
+                        Shirts
+                    </option>
+
+                    <option value="Jeans">
+                        Jeans
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <!-- CONDITION -->
+                <label for="condition">
+                    Condition
+                </label>
+
+                <select id="condition" required>
+
+                    <option value="">
+                        Select Condition
+                    </option>
+
+                    <option value="Excellent">
+                        Excellent
+                    </option>
+
+                    <option value="Good">
+                        Good
+                    </option>
+
+                    <option value="Fair">
+                        Fair
+                    </option>
+
+                    <option value="Poor">
+                        Poor
+                    </option>
+
+                </select>
+
+
+                <!-- ORIGINAL ESTIMATED VALUE -->
+                <label for="estimatedValue">
+                    Estimated Original Value (₹)
+                </label>
+
+                <input
+                    type="number"
+                    id="estimatedValue"
+                    placeholder="Example: 1000"
+                    min="1"
+                    required
+                >
+
+
+                <!-- BUTTON -->
+                <button
+                    type="submit"
+                    class="btn">
+
+                    Calculate Swap Value
+
+                </button>
+
+            </form>
+
+
+            <!-- RESULT -->
+            <div
+                id="calculatorResult"
+                style="margin-top: 20px;">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="js/swap-value.js"></script>
+
+</body>
+
+</html>

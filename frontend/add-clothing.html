@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Clothing - ClothSwap</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">ClothSwap</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="listings.html">Browse Clothes</a>
+    </div>
+
+</nav>
+
+
+<div class="form-container">
+
+    <h1>List Your Clothing</h1>
+
+    <form id="clothingForm" enctype="multipart/form-data">
+
+        <input
+            type="text"
+            id="title"
+            placeholder="Clothing Title"
+            required
+        >
+
+        <textarea
+            id="description"
+            placeholder="Description"
+            required
+        ></textarea>
+
+        <input
+            type="text"
+            id="category"
+            placeholder="Category"
+            required
+        >
+
+        <input
+            type="text"
+            id="brand"
+            placeholder="Brand"
+            required
+        >
+
+        <input
+            type="text"
+            id="size"
+            placeholder="Size"
+            required
+        >
+
+        <select id="condition" required>
+            <option value="">Select Condition</option>
+            <option value="New">New</option>
+            <option value="Like New">Like New</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+        </select>
+
+        <input
+            type="number"
+            id="estimatedValue"
+            placeholder="Estimated Value"
+            required
+        >
+
+        <input
+            type="text"
+            id="city"
+            placeholder="City"
+            required
+        >
+
+        <input
+            type="text"
+            id="state"
+            placeholder="State"
+            required
+        >
+
+        <label>Select Clothing Images</label>
+
+        <input
+            type="file"
+            id="images"
+            accept="image/*"
+            multiple
+        >
+
+        <button
+            type="submit"
+            class="btn">
+            List Clothing
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+
+<script src="js/add-clothing.js"></script>
+
+</body>
+</html>

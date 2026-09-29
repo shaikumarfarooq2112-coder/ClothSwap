@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel - ClothSwap</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            ClothSwap Admin
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="listings.html">Browse Clothes</a>
+
+            <button onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ADMIN PANEL -->
+
+    <section class="features">
+
+        <h1>🛠️ Admin Panel</h1>
+
+        <p>
+            Manage users, clothing listings and swap requests.
+        </p>
+
+
+        <!-- ===================================== -->
+        <!-- STATISTICS -->
+        <!-- ===================================== -->
+
+        <div class="feature-container">
+
+            <div class="feature-card">
+
+                <h2>Total Users</h2>
+
+                <h1 id="totalUsers">
+                    -
+                </h1>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h2>Total Listings</h2>
+
+                <h1 id="totalListings">
+                    -
+                </h1>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h2>Available Listings</h2>
+
+                <h1 id="availableListings">
+                    -
+                </h1>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h2>Swapped Listings</h2>
+
+                <h1 id="swappedListings">
+                    -
+                </h1>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h2>Total Swap Requests</h2>
+
+                <h1 id="totalSwapRequests">
+                    -
+                </h1>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h2>Pending Requests</h2>
+
+                <h1 id="pendingRequests">
+                    -
+                </h1>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h2>Accepted Requests</h2>
+
+                <h1 id="acceptedRequests">
+                    -
+                </h1>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h2>Rejected Requests</h2>
+
+                <h1 id="rejectedRequests">
+                    -
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===================================== -->
+        <!-- USERS -->
+        <!-- ===================================== -->
+
+        <div class="feature-card" style="margin-top: 30px;">
+
+            <h2>👥 All Users</h2>
+
+            <div id="usersContainer">
+
+                <p>
+                    Loading users...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===================================== -->
+        <!-- LISTINGS -->
+        <!-- ===================================== -->
+
+        <div class="feature-card" style="margin-top: 30px;">
+
+            <h2>👕 All Clothing Listings</h2>
+
+            <div id="listingsContainer">
+
+                <p>
+                    Loading listings...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===================================== -->
+        <!-- SWAP REQUESTS -->
+        <!-- ===================================== -->
+
+        <div class="feature-card" style="margin-top: 30px;">
+
+            <h2>🔄 All Swap Requests</h2>
+
+            <div id="swapsContainer">
+
+                <p>
+                    Loading swap requests...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="js/admin.js"></script>
+
+</body>
+
+</html>

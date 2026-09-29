@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Location Matching - ClothSwap</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            ClothSwap
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="listings.html">Browse Clothes</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="swap-requests.html">Swap Requests</a>
+
+            <a href="swap-value.html">Value Calculator</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- LOCATION SEARCH -->
+    <section class="features">
+
+        <h1>📍 Find Clothes Near You</h1>
+
+        <p>
+            Find available clothing items based on your location.
+        </p>
+
+
+        <div class="feature-card">
+
+            <form id="locationForm">
+
+                <!-- CITY -->
+                <label for="city">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="city"
+                    placeholder="Example: Sullurpeta"
+                >
+
+
+                <!-- STATE -->
+                <label for="state">
+                    State
+                </label>
+
+                <input
+                    type="text"
+                    id="state"
+                    placeholder="Example: Andhra Pradesh"
+                >
+
+
+                <!-- CATEGORY -->
+                <label for="category">
+                    Category
+                </label>
+
+                <select id="category">
+
+                    <option value="">
+                        All Categories
+                    </option>
+
+                    <option value="T-Shirts">
+                        T-Shirts
+                    </option>
+
+                    <option value="Shirts">
+                        Shirts
+                    </option>
+
+                    <option value="Jeans">
+                        Jeans
+                    </option>
+
+                    <option value="Jackets">
+                        Jackets
+                    </option>
+
+                    <option value="Dresses">
+                        Dresses
+                    </option>
+
+                    <option value="Sportswear">
+                        Sportswear
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    🔍 Find Clothes
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <div
+            id="locationResults"
+            class="feature-container"
+            style="margin-top: 30px;">
+
+            <p>
+                Enter a location and search for clothes.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <script src="js/location.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat - ClothSwap</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        ClothSwap
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="listings.html">Browse Clothes</a>
+        <a href="swap-requests.html">Swap Requests</a>
+    </div>
+
+</nav>
+
+
+<section class="features">
+
+    <h1>Swap Chat</h1>
+
+    <div id="chatContainer">
+
+        <p id="chatStatus">
+            Loading chat...
+        </p>
+
+        <div id="messagesContainer"></div>
+
+        <div class="chat-input-container">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type your message..."
+            >
+
+            <button
+                class="btn"
+                onclick="sendMessage()">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="js/chat.js"></script>
+
+</body>
+
+</html>
