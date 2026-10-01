@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api";
+const API = "https://clothswap-backend-ul42.onrender.com/api";
 
 const token = localStorage.getItem("token");
 const currentUser = JSON.parse(localStorage.getItem("user"));
@@ -95,7 +95,7 @@ async function loadRequestedItem() {
                     ?
                     `
                     <img
-                        src="http://localhost:5000${requestedItem.images[0]}"
+                        src="https://clothswap-backend-ul42.onrender.com${requestedItem.images[0]}"
                         alt="${requestedItem.title}"
                         style="
                             width:250px;

@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api";
+const API = "https://clothswap-backend-ul42.onrender.com/api";
 
 const token = localStorage.getItem("token");
 const savedUser = localStorage.getItem("user");

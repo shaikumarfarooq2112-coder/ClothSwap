@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api";
+const API = "https://clothswap-backend-ul42.onrender.com/api";
 
 
 // ========================================
@@ -211,7 +211,7 @@ document
                         <div class="clothing-image-container">
 
                             <img
-                                src="http://localhost:5000${item.images[0]}"
+                                src="https://clothswap-backend-ul42.onrender.com${item.images[0]}"
                                 class="clothing-image"
                                 alt="${item.title}"
                             >

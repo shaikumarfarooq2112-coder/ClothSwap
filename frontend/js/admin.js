@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api";
+const API = "https://clothswap-backend-ul42.onrender.com/api";
 
 
 // ========================================
@@ -331,7 +331,7 @@ async function loadListings() {
                 imageHTML = `
 
                     <img
-                        src="http://localhost:5000${item.images[0]}"
+                        src="https://clothswap-backend-ul42.onrender.com${item.images[0]}"
                         alt="${item.title}"
                         style="
                             width: 150px;
