@@ -116,6 +116,7 @@ const getClothingById = async (req, res) => {
 };
 
 
+
 // UPDATE CLOTHING
 const updateClothing = async (req, res) => {
     try {
@@ -134,28 +135,61 @@ const updateClothing = async (req, res) => {
             });
         }
 
-        const updatedClothing = await Clothing.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            {
-                new: true,
-                runValidators: true
+        // Update only the fields provided
+        const allowedFields = [
+            "title",
+            "description",
+            "category",
+            "brand",
+            "size",
+            "condition",
+            "estimatedValue"
+        ];
+
+        allowedFields.forEach(field => {
+            if (req.body[field] !== undefined) {
+                clothing[field] = req.body[field];
             }
-        );
+        });
+
+        // Update location only if provided
+        if (req.body.city !== undefined) {
+            clothing.location.city = req.body.city;
+        }
+
+        if (req.body.state !== undefined) {
+            clothing.location.state = req.body.state;
+        }
+
+        // Add newly uploaded images without deleting old images
+        if (req.files && req.files.length > 0) {
+            const uploadedImages = req.files.map(
+                file => `/uploads/${file.filename}`
+            );
+
+            clothing.images = [
+                ...clothing.images,
+                ...uploadedImages
+            ];
+        }
+
+        await clothing.save();
 
         res.json({
             message: "Clothing listing updated successfully",
-            clothing: updatedClothing
+            clothing
         });
 
     } catch (error) {
         console.error("Update clothing error:", error);
 
         res.status(500).json({
-            message: "Server error while updating clothing"
+            message: "Server error while updating clothing",
+            error: error.message
         });
     }
 };
+
 
 
 // DELETE CLOTHING

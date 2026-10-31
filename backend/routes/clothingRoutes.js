@@ -26,7 +26,12 @@ router.post(
     createClothing
 );
 // Update clothing
-router.put("/:id", protect, updateClothing);
+router.put(
+    "/:id",
+    protect,
+    upload.array("images", 5),
+    updateClothing
+);
 
 // Delete clothing
 router.delete("/:id", protect, deleteClothing);
