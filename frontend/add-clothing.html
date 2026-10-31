@@ -1,19 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Add Clothing - ClothSwap</title>
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <nav class="navbar">
-
     <div class="logo">ClothSwap</div>
 
     <div class="nav-links">
@@ -21,9 +19,7 @@
         <a href="dashboard.html">Dashboard</a>
         <a href="listings.html">Browse Clothes</a>
     </div>
-
 </nav>
-
 
 <div class="form-container">
 
@@ -31,40 +27,35 @@
 
     <form id="clothingForm" enctype="multipart/form-data">
 
-        <input
-            type="text"
-            id="title"
-            placeholder="Clothing Title"
-            required
-        >
+        <input type="text" id="title"
+            placeholder="Clothing Title" required>
 
-        <textarea
-            id="description"
-            placeholder="Description"
-            required
-        ></textarea>
+        <textarea id="description"
+            placeholder="Description" required></textarea>
 
-        <input
-            type="text"
-            id="category"
-            placeholder="Category"
-            required
-        >
+        <label>Category</label>
+        <select id="category" required>
+            <option value="">Select Category</option>
+            <option value="T-Shirts">T-Shirts</option>
+            <option value="Shirts">Shirts</option>
+            <option value="Jeans">Jeans</option>
+            <option value="Trousers">Trousers</option>
+            <option value="Dresses">Dresses</option>
+            <option value="Jackets">Jackets</option>
+            <option value="Sweaters">Sweaters</option>
+            <option value="Skirts">Skirts</option>
+            <option value="Ethnic Wear">Ethnic Wear</option>
+            <option value="Sportswear">Sportswear</option>
+            <option value="Other">Other</option>
+        </select>
 
-        <input
-            type="text"
-            id="brand"
-            placeholder="Brand"
-            required
-        >
+        <input type="text" id="brand"
+            placeholder="Brand" required>
 
-        <input
-            type="text"
-            id="size"
-            placeholder="Size"
-            required
-        >
+        <input type="text" id="size"
+            placeholder="Size (S, M, L, XL)" required>
 
+        <label>Condition</label>
         <select id="condition" required>
             <option value="">Select Condition</option>
             <option value="New">New</option>
@@ -73,39 +64,22 @@
             <option value="Fair">Fair</option>
         </select>
 
-        <input
-            type="number"
-            id="estimatedValue"
-            placeholder="Estimated Value"
-            required
-        >
+        <input type="number" id="estimatedValue"
+            placeholder="Estimated Value (₹)"
+            min="0" required>
 
-        <input
-            type="text"
-            id="city"
-            placeholder="City"
-            required
-        >
+        <input type="text" id="city"
+            placeholder="City" required>
 
-        <input
-            type="text"
-            id="state"
-            placeholder="State"
-            required
-        >
+        <input type="text" id="state"
+            placeholder="State" required>
 
         <label>Select Clothing Images</label>
 
-        <input
-            type="file"
-            id="images"
-            accept="image/*"
-            multiple
-        >
+        <input type="file" id="images"
+            accept="image/*" multiple>
 
-        <button
-            type="submit"
-            class="btn">
+        <button type="submit" class="btn">
             List Clothing
         </button>
 
@@ -114,7 +88,6 @@
     <p id="message"></p>
 
 </div>
-
 
 <script src="js/add-clothing.js"></script>
 
