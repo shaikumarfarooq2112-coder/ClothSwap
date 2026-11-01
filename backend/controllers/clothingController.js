@@ -1,3 +1,4 @@
+
 const Clothing = require("../models/Clothing");
 
 // CREATE CLOTHING
@@ -12,8 +13,7 @@ const createClothing = async (req, res) => {
             condition,
             estimatedValue,
             city,
-            state,
-            images
+            state
         } = req.body;
 
         if (
@@ -32,25 +32,26 @@ const createClothing = async (req, res) => {
             });
         }
 
+        // Get permanent Cloudinary image URLs
         const uploadedImages = req.files
-    ? req.files.map(file => `/uploads/${file.filename}`)
-    : [];
+            ? req.files.map(file => file.path)
+            : [];
 
-const clothing = await Clothing.create({
-    title,
-    description,
-    category,
-    brand,
-    size,
-    condition,
-    estimatedValue,
-    images: uploadedImages,
-    location: {
-        city,
-        state
-    },
-    owner: req.user.userId
-});
+        const clothing = await Clothing.create({
+            title,
+            description,
+            category,
+            brand,
+            size,
+            condition,
+            estimatedValue,
+            images: uploadedImages,
+            location: {
+                city,
+                state
+            },
+            owner: req.user.userId
+        });
 
         res.status(201).json({
             message: "Clothing listed successfully",
@@ -58,11 +59,11 @@ const clothing = await Clothing.create({
         });
 
     } catch (error) {
-       console.error("CREATE CLOTHING ERROR:", error);
+        console.error("CREATE CLOTHING ERROR:", error);
 
-       res.status(500).json({
-           message: "Server error while creating clothing listing",
-           error: error.message
+        res.status(500).json({
+            message: "Server error while creating clothing listing",
+            error: error.message
         });
     }
 };
@@ -74,8 +75,8 @@ const getAllClothing = async (req, res) => {
         const clothing = await Clothing.find({
             status: "available"
         })
-        .populate("owner", "name email location")
-        .sort({ createdAt: -1 });
+            .populate("owner", "name email location")
+            .sort({ createdAt: -1 });
 
         res.json({
             count: clothing.length,
@@ -114,7 +115,6 @@ const getClothingById = async (req, res) => {
         });
     }
 };
-
 
 
 // UPDATE CLOTHING
@@ -161,14 +161,14 @@ const updateClothing = async (req, res) => {
             clothing.location.state = req.body.state;
         }
 
-        // Add newly uploaded images without deleting old images
+        // Add new Cloudinary image URLs without deleting old images
         if (req.files && req.files.length > 0) {
             const uploadedImages = req.files.map(
-                file => `/uploads/${file.filename}`
+                file => file.path
             );
 
             clothing.images = [
-                ...clothing.images,
+                ...(clothing.images || []),
                 ...uploadedImages
             ];
         }
@@ -189,7 +189,6 @@ const updateClothing = async (req, res) => {
         });
     }
 };
-
 
 
 // DELETE CLOTHING
