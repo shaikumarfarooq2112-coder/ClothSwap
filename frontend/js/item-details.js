@@ -138,52 +138,42 @@ async function loadItem() {
         }
 
 
+        
         // =================================================
         // IMAGE
         // =================================================
 
         let imageHTML = "";
 
-
         if (
             item.images &&
             Array.isArray(item.images) &&
             item.images.length > 0
         ) {
+            const savedImage = item.images[0];
+
+            const imageUrl = savedImage.startsWith("http")
+                ? savedImage
+                : `${API.replace("/api", "")}${savedImage}`;
 
             imageHTML = `
-
                 <div class="details-image-container">
-
                     <img
-                        src="${API.replace(
-                            "/api",
-                            ""
-                        )}${item.images[0]}"
+                        src="${imageUrl}"
                         class="details-image"
                         alt="${item.title || "Clothing item"}"
                         onerror="this.style.display='none'"
                     >
-
                 </div>
-
             `;
-
         } else {
-
             imageHTML = `
-
                 <div class="details-image-container">
-
-                    <p>
-                        No image available
-                    </p>
-
+                    <p>No image available</p>
                 </div>
-
             `;
-
         }
+
 
 
         // =================================================
