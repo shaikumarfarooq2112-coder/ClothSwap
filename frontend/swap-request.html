@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,119 @@
     <title>Request Swap - ClothSwap</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .clothing-search-container {
+            position: relative;
+            width: 100%;
+            margin: 10px 0 20px;
+        }
+
+        #offeredItemSearch {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #clothingSuggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .clothing-suggestion {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .clothing-suggestion:hover {
+            background: #eaf2ff;
+            color: #1769d2;
+        }
+
+        #selectedClothing {
+            margin-top: 8px;
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Swap Value Comparison */
+
+        .swap-value-comparison {
+            background: #fff;
+            border: 1px solid #e4d5c5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .swap-value-comparison h2 {
+            color: #805333;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .value-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .value-row strong {
+            color: #805333;
+        }
+
+        #swapValueStatus {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .value-lower {
+            background: #fff3df;
+            color: #946000;
+        }
+
+        .value-higher {
+            background: #eaf2ff;
+            color: #1769d2;
+        }
+
+        .value-equal {
+            background: #e8f7ed;
+            color: #20733b;
+        }
+
+        @media (max-width: 600px) {
+            .swap-value-comparison {
+                padding: 14px;
+            }
+
+            .value-row {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="app-page">
 
 <nav class="navbar">
     <div class="logo">ClothSwap</div>
@@ -26,18 +137,71 @@
 
     <h1>Request a Swap</h1>
 
+    <!-- Requested Clothing Details -->
     <div id="itemDetails"></div>
 
     <form id="swapForm">
 
-        <label for="offeredItem">Select Your Clothing Item</label>
+        <!-- Select Your Clothing -->
+        <label for="offeredItemSearch">
+            Select Your Clothing Item
+        </label>
 
-        <select id="offeredItem" required>
-            <option value="">Loading your clothes...</option>
-        </select>
+        <div class="clothing-search-container">
 
-        <br><br>
+            <input
+                type="text"
+                id="offeredItemSearch"
+                placeholder="Type clothing name, brand or size..."
+                autocomplete="off"
+                required
+            >
 
+            <div id="clothingSuggestions"></div>
+
+            <input
+                type="hidden"
+                id="offeredItem"
+                name="offeredItem"
+            >
+
+            <div id="selectedClothing"></div>
+
+        </div>
+
+        <!-- Swap Value Comparison -->
+        <div
+            id="swapValueComparison"
+            class="swap-value-comparison"
+            style="display: none;"
+        >
+
+            <h2>Swap Value Comparison</h2>
+
+            <div class="value-row">
+                <span>Your Offered Item:</span>
+                <strong id="offeredItemValue">₹0</strong>
+            </div>
+
+            <div class="value-row">
+                <span>Requested Item:</span>
+                <strong id="requestedItemValue">₹0</strong>
+            </div>
+
+            <div class="value-row">
+                <span>Value Difference:</span>
+                <strong id="swapValueDifference">₹0</strong>
+            </div>
+
+            <p id="swapValueStatus"></p>
+
+            <p style="font-size: 13px; color: #777; text-align: center;">
+                This comparison is an estimate to help you evaluate the swap.
+            </p>
+
+        </div>
+
+        <!-- Message -->
         <label for="message">Message</label>
 
         <textarea

@@ -1,17 +1,30 @@
+
 const API = "https://clothswap-backend-ul42.onrender.com/api";
 
 const token = localStorage.getItem("token");
-const currentUser = JSON.parse(localStorage.getItem("user"));
+const currentUser = JSON.parse(localStorage.getItem("user") || "null");
 
 const params = new URLSearchParams(window.location.search);
 const requestedItemId = params.get("itemId");
 
 const itemDetails = document.getElementById("itemDetails");
 const offeredItem = document.getElementById("offeredItem");
+const offeredItemSearch = document.getElementById("offeredItemSearch");
+const clothingSuggestions = document.getElementById("clothingSuggestions");
+const selectedClothing = document.getElementById("selectedClothing");
 const swapForm = document.getElementById("swapForm");
 const swapMessage = document.getElementById("swapMessage");
 
+// Swap calculator elements
+const swapValueComparison = document.getElementById("swapValueComparison");
+const offeredItemValue = document.getElementById("offeredItemValue");
+const requestedItemValue = document.getElementById("requestedItemValue");
+const swapValueDifference = document.getElementById("swapValueDifference");
+const swapValueStatus = document.getElementById("swapValueStatus");
+
 let requestedItem = null;
+let myClothes = [];
+let selectedClothingItem = null;
 
 
 // ==========================================
@@ -22,6 +35,137 @@ if (!token || !currentUser) {
     alert("Please login first.");
     window.location.href = "login.html";
 }
+
+
+// ==========================================
+// HELPER: GET OWNER ID
+// ==========================================
+
+function getOwnerId(owner) {
+    if (!owner) return null;
+
+    if (typeof owner === "object") {
+        return owner._id || owner.id || null;
+    }
+
+    return owner;
+}
+
+
+// ==========================================
+// HELPER: GET IMAGE URL
+// ==========================================
+
+function getImageUrl(image) {
+    if (!image) return "";
+
+    if (image.startsWith("http")) {
+        return image;
+    }
+
+    return `https://clothswap-backend-ul42.onrender.com${image}`;
+}
+
+
+// ==========================================
+// HELPER: FORMAT CURRENCY
+// ==========================================
+
+function formatCurrency(value) {
+    return Number(value).toLocaleString("en-IN", {
+        maximumFractionDigits: 2
+    });
+}
+
+
+// ==========================================
+// RESET SWAP VALUE COMPARISON
+// ==========================================
+
+function resetSwapComparison() {
+    if (!swapValueComparison) return;
+
+    swapValueComparison.style.display = "none";
+
+    offeredItemValue.textContent = "₹0";
+    requestedItemValue.textContent = "₹0";
+    swapValueDifference.textContent = "₹0";
+
+    swapValueStatus.textContent = "";
+    swapValueStatus.className = "";
+}
+
+
+// ==========================================
+// CALCULATE SWAP VALUE COMPARISON
+// ==========================================
+
+
+function calculateSwapValue() {
+
+    if (
+        !requestedItem ||
+        !selectedClothingItem ||
+        !swapValueComparison
+    ) {
+        resetSwapComparison();
+        return;
+    }
+
+    const offeredValue = Number(selectedClothingItem.estimatedValue);
+    const requestedValue = Number(requestedItem.estimatedValue);
+
+    if (
+        !Number.isFinite(offeredValue) ||
+        !Number.isFinite(requestedValue) ||
+        offeredValue < 0 ||
+        requestedValue < 0
+    ) {
+        resetSwapComparison();
+        swapValueComparison.style.display = "block";
+        swapValueStatus.textContent =
+            "Unable to compare values. Please check the item details.";
+        swapValueStatus.className = "value-lower";
+        return;
+    }
+
+    const difference = Math.abs(offeredValue - requestedValue);
+
+    offeredItemValue.textContent =
+        `₹${formatCurrency(offeredValue)}`;
+
+    requestedItemValue.textContent =
+        `₹${formatCurrency(requestedValue)}`;
+
+    swapValueDifference.textContent =
+        `₹${formatCurrency(difference)}`;
+
+    swapValueComparison.style.display = "block";
+    swapValueStatus.className = "";
+
+    if (difference === 0) {
+
+        swapValueStatus.textContent =
+            "Fair Swap! Both items have equal estimated values. This looks like a balanced exchange.";
+
+        swapValueStatus.classList.add("value-equal");
+
+    } else if (offeredValue < requestedValue) {
+
+        swapValueStatus.textContent =
+            `Your item has a lower estimated value by ₹${formatCurrency(difference)}. Consider offering an additional item or negotiating with the owner.`;
+
+        swapValueStatus.classList.add("value-lower");
+
+    } else {
+
+        swapValueStatus.textContent =
+            `Your item has a higher estimated value by ₹${formatCurrency(difference)}. You may negotiate for an additional item or a fair exchange.`;
+
+        swapValueStatus.classList.add("value-higher");
+    }
+}
+
 
 
 // ==========================================
@@ -36,12 +180,10 @@ async function loadRequestedItem() {
                 Requested clothing item is missing.
             </p>
         `;
-
         return;
     }
 
     try {
-
         const response = await fetch(
             `${API}/clothing/${requestedItemId}`
         );
@@ -65,49 +207,39 @@ async function loadRequestedItem() {
             throw new Error("Clothing item data not found.");
         }
 
-        // Get owner ID
-        let ownerId = null;
-
-        if (requestedItem.owner) {
-
-            if (typeof requestedItem.owner === "object") {
-                ownerId = requestedItem.owner._id;
-            } else {
-                ownerId = requestedItem.owner;
-            }
-        }
+        const ownerId = getOwnerId(requestedItem.owner);
 
         requestedItem.receiverId = ownerId;
 
         console.log("Receiver ID:", ownerId);
 
+        const image = Array.isArray(requestedItem.images)
+            ? requestedItem.images[0]
+            : requestedItem.images;
 
-        // Display requested clothing
+        const imageHTML = image
+            ? `
+                <img
+                    src="${getImageUrl(image)}"
+                    alt="${requestedItem.title || "Clothing item"}"
+                    style="
+                        width:250px;
+                        max-width:100%;
+                        border-radius:10px;
+                        margin:10px 0;
+                        object-fit:cover;
+                    "
+                    onerror="this.style.display='none'"
+                >
+            `
+            : "<p>No image available</p>";
+
         itemDetails.innerHTML = `
-
             <div class="feature-card">
 
                 <h2>${requestedItem.title || "Clothing Item"}</h2>
 
-                ${
-                    requestedItem.images &&
-                    requestedItem.images.length > 0
-                    ?
-                    `
-                    <img
-                        src="https://clothswap-backend-ul42.onrender.com${requestedItem.images[0]}"
-                        alt="${requestedItem.title}"
-                        style="
-                            width:250px;
-                            max-width:100%;
-                            border-radius:10px;
-                            margin:10px 0;
-                        "
-                    >
-                    `
-                    :
-                    ""
-                }
+                ${imageHTML}
 
                 <p>
                     <strong>Description:</strong>
@@ -136,7 +268,7 @@ async function loadRequestedItem() {
 
                 <p>
                     <strong>Estimated Value:</strong>
-                    ₹${requestedItem.estimatedValue || 0}
+                    ₹${formatCurrency(requestedItem.estimatedValue || 0)}
                 </p>
 
                 <p>
@@ -157,8 +289,10 @@ async function loadRequestedItem() {
             </div>
         `;
 
-    } catch (error) {
+        // Update calculator if an item is already selected
+        calculateSwapValue();
 
+    } catch (error) {
         console.error("Load requested item error:", error);
 
         itemDetails.innerHTML = `
@@ -168,6 +302,145 @@ async function loadRequestedItem() {
         `;
     }
 }
+
+
+// ==========================================
+// DISPLAY SEARCH SUGGESTIONS
+// ==========================================
+
+function displayMyClothes(searchText = "") {
+
+    clothingSuggestions.innerHTML = "";
+    clothingSuggestions.style.display = "none";
+
+    const search = searchText.toLowerCase().trim();
+
+    if (!search) {
+        return;
+    }
+
+    const filteredClothes = myClothes
+        .filter(item => {
+
+            const searchableText = `
+                ${item.title || ""}
+                ${item.brand || ""}
+                ${item.category || ""}
+                ${item.size || ""}
+            `.toLowerCase();
+
+            return searchableText.includes(search);
+        })
+        .sort((a, b) => {
+
+            const titleA = (a.title || "").toLowerCase();
+            const titleB = (b.title || "").toLowerCase();
+
+            if (titleA === search) return -1;
+            if (titleB === search) return 1;
+
+            if (titleA.startsWith(search) && !titleB.startsWith(search)) return -1;
+            if (titleB.startsWith(search) && !titleA.startsWith(search)) return 1;
+
+            return titleA.localeCompare(titleB);
+        });
+
+    if (filteredClothes.length === 0) {
+
+        const noResult = document.createElement("div");
+
+        noResult.textContent = "No matching clothes found.";
+
+        noResult.style.padding = "12px";
+        noResult.style.color = "#777";
+
+        clothingSuggestions.appendChild(noResult);
+        clothingSuggestions.style.display = "block";
+
+        return;
+    }
+
+    filteredClothes.forEach(item => {
+
+        const suggestion = document.createElement("div");
+
+        suggestion.className = "clothing-suggestion";
+
+        suggestion.textContent =
+            `${item.title || "Clothing"} - ${item.brand || "N/A"} - Size ${item.size || "N/A"}`;
+
+        suggestion.addEventListener("mousedown", function(event) {
+
+            event.preventDefault();
+
+            selectClothing(item);
+
+        });
+
+        clothingSuggestions.appendChild(suggestion);
+    });
+
+    clothingSuggestions.style.display = "block";
+}
+
+
+// ==========================================
+// SELECT CLOTHING
+// ==========================================
+
+function selectClothing(item) {
+
+    selectedClothingItem = item;
+
+    offeredItem.value = item._id;
+
+    offeredItemSearch.value = item.title || "Clothing";
+
+    selectedClothing.textContent =
+        `Selected: ${item.title || "Clothing"}`;
+
+    clothingSuggestions.innerHTML = "";
+    clothingSuggestions.style.display = "none";
+
+    console.log("Selected clothing:", item);
+
+    // Calculate comparison after selecting clothing
+    calculateSwapValue();
+}
+
+
+// ==========================================
+// SEARCH INPUT EVENT
+// ==========================================
+
+offeredItemSearch.addEventListener("input", function() {
+
+    offeredItem.value = "";
+
+    selectedClothingItem = null;
+
+    selectedClothing.textContent = "";
+
+    // Hide old comparison when search changes
+    resetSwapComparison();
+
+    displayMyClothes(this.value);
+
+});
+
+
+// Hide suggestions when clicking outside
+
+document.addEventListener("click", function(event) {
+
+    if (
+        !offeredItemSearch.contains(event.target) &&
+        !clothingSuggestions.contains(event.target)
+    ) {
+        clothingSuggestions.style.display = "none";
+    }
+
+});
 
 
 // ==========================================
@@ -192,12 +465,6 @@ async function loadMyClothes() {
 
         const clothes = data.clothing || [];
 
-        offeredItem.innerHTML = `
-            <option value="">Select an item</option>
-        `;
-
-
-        // Get current user's ID
         const currentUserId =
             currentUser._id ||
             currentUser.id ||
@@ -205,63 +472,41 @@ async function loadMyClothes() {
 
         console.log("Current user ID:", currentUserId);
 
+        if (!currentUserId) {
+            throw new Error("Unable to identify logged-in user.");
+        }
 
-        // Find only current user's clothes
-        const myClothes = clothes.filter(item => {
+        myClothes = clothes.filter(item => {
 
-            let ownerId = null;
+            const ownerId = getOwnerId(item.owner);
 
-            if (item.owner) {
-
-                if (typeof item.owner === "object") {
-                    ownerId = item.owner._id;
-                } else {
-                    ownerId = item.owner;
-                }
-            }
-
-            return String(ownerId) === String(currentUserId);
+            return (
+                String(ownerId) === String(currentUserId) &&
+                String(item._id) !== String(requestedItemId)
+            );
         });
-
 
         console.log("My clothes:", myClothes);
 
-
         if (myClothes.length === 0) {
 
-            offeredItem.innerHTML = `
-                <option value="">
-                    You have no available clothes
-                </option>
-            `;
+            offeredItemSearch.placeholder =
+                "You have no clothing listings. Add one first.";
 
-            return;
+        } else {
+
+            offeredItemSearch.placeholder =
+                "Type clothing name, brand or size...";
+
         }
-
-
-        // Add user's clothes to dropdown
-        myClothes.forEach(item => {
-
-            const option =
-                document.createElement("option");
-
-            option.value = item._id;
-
-            option.textContent =
-                `${item.title} - ${item.brand} - ${item.size}`;
-
-            offeredItem.appendChild(option);
-        });
 
     } catch (error) {
 
         console.error("Load my clothes error:", error);
 
-        offeredItem.innerHTML = `
-            <option value="">
-                Unable to load your clothes
-            </option>
-        `;
+        offeredItemSearch.placeholder =
+            "Unable to load your clothes";
+
     }
 }
 
@@ -274,129 +519,106 @@ swapForm.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
-
     const offeredItemId = offeredItem.value;
 
     const message =
         document.getElementById("message").value.trim();
 
-
-    // Check requested item
     if (!requestedItemId) {
-
         alert("Requested clothing item is missing.");
-
         return;
     }
 
-
-    // Check offered item
-    if (!offeredItemId) {
-
-        alert("Please select your clothing item.");
-
+    if (!offeredItemId || !selectedClothingItem) {
+        alert("Please select your clothing item from the suggestions.");
+        offeredItemSearch.focus();
         return;
     }
 
-
-    // Check requested item data
     if (!requestedItem) {
-
-        alert(
-            "Requested clothing information is not loaded yet."
-        );
-
+        alert("Requested clothing information is not loaded yet.");
         return;
     }
 
+    const selectedItem = myClothes.find(
+        item => String(item._id) === String(offeredItemId)
+    );
 
-    // Get receiver
-    const receiverId =
-        requestedItem.receiverId;
+    if (!selectedItem) {
+        alert("Please select one of your own clothing items.");
+        return;
+    }
 
+    const receiverId = requestedItem.receiverId;
 
     if (!receiverId) {
-
-        alert(
-            "Unable to identify the clothing owner."
-        );
-
+        alert("Unable to identify the clothing owner.");
         return;
     }
 
+    const currentUserId =
+        currentUser._id ||
+        currentUser.id ||
+        currentUser.userId;
+
+    if (String(receiverId) === String(currentUserId)) {
+        alert("You cannot send a swap request for your own clothing.");
+        return;
+    }
 
     console.log("Sending swap request:");
     console.log("Receiver:", receiverId);
     console.log("Offered Item:", offeredItemId);
     console.log("Requested Item:", requestedItemId);
 
-
     try {
 
-        const response = await fetch(
-            `${API}/swap`,
-            {
-                method: "POST",
+        const response = await fetch(`${API}/swap`, {
 
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
+            method: "POST",
 
-                body: JSON.stringify({
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
 
-                    receiver: receiverId,
+            body: JSON.stringify({
 
-                    offeredItem: offeredItemId,
+                receiver: receiverId,
+                offeredItem: offeredItemId,
+                requestedItem: requestedItemId,
+                message: message
 
-                    requestedItem: requestedItemId,
+            })
 
-                    message: message
-                })
-            }
-        );
-
+        });
 
         const data = await response.json();
 
-        console.log(
-            "Swap request response:",
-            data
-        );
-
+        console.log("Swap request response:", data);
 
         if (!response.ok) {
-
             throw new Error(
-                data.message ||
-                "Failed to send swap request"
+                data.message || "Failed to send swap request"
             );
         }
-
 
         swapMessage.textContent =
             "Swap request sent successfully!";
 
         swapMessage.style.color = "green";
 
-
-        // Go to swap requests page
         setTimeout(() => {
 
-            window.location.href =
-                "swap-requests.html";
+            window.location.href = "swap-requests.html";
 
         }, 1500);
 
     } catch (error) {
 
-        console.error(
-            "Swap request error:",
-            error
-        );
+        console.error("Swap request error:", error);
 
-        swapMessage.textContent =
-            error.message;
+        swapMessage.textContent = error.message;
 
         swapMessage.style.color = "red";
     }
@@ -407,6 +629,8 @@ swapForm.addEventListener("submit", async function(event) {
 // ==========================================
 // START
 // ==========================================
+
+resetSwapComparison();
 
 loadRequestedItem();
 loadMyClothes();

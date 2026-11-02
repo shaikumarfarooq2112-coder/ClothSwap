@@ -406,3 +406,420 @@ footer {
         height: 200px;
     }
 }
+/* =====================================================
+   CLOTHSWAP MODERN DESIGN
+   Applies only to pages with class="app-page"
+===================================================== */
+
+body.app-page {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8f5f0;
+    color: #30271f;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+body.app-page .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 7%;
+    background: #fffdf9;
+    box-shadow: 0 3px 15px rgba(65, 45, 25, 0.08);
+    border-bottom: 1px solid #eee5da;
+}
+
+body.app-page .logo {
+    color: #795438;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+body.app-page .nav-links {
+    align-items: center;
+    gap: 28px;
+}
+
+body.app-page .nav-links a {
+    color: #51402f;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+body.app-page .nav-links a:hover {
+    color: #a46d3c;
+    opacity: 1;
+}
+
+/* PAGE SECTIONS */
+
+body.app-page .features,
+body.app-page .swap-container {
+    max-width: 1200px;
+    margin: 45px auto;
+    padding: 35px;
+    background: transparent;
+}
+
+body.app-page .features h1,
+body.app-page .swap-container h1 {
+    color: #65452d;
+    font-size: 34px;
+    font-weight: 750;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+body.app-page h2,
+body.app-page h3 {
+    color: #65452d;
+}
+
+/* CARDS */
+
+body.app-page .feature-card,
+body.app-page .swap-card,
+body.app-page .form-container,
+body.app-page .item-details-card {
+    background: #fffdf9;
+    border: 1px solid #eee5da;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 5px 20px rgba(75, 52, 30, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.app-page .feature-card:hover,
+body.app-page .swap-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 25px rgba(75, 52, 30, 0.12);
+}
+
+/* FORMS */
+
+body.app-page input,
+body.app-page select,
+body.app-page textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 8px 0 18px;
+    border: 1px solid #dfd2c3;
+    border-radius: 10px;
+    background: #fff;
+    color: #30271f;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.25s, box-shadow 0.25s;
+}
+
+body.app-page input:focus,
+body.app-page select:focus,
+body.app-page textarea:focus {
+    border-color: #a8794d;
+    box-shadow: 0 0 0 3px rgba(168, 121, 77, 0.13);
+}
+
+body.app-page textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+body.app-page label {
+    display: block;
+    color: #62472f;
+    font-weight: 650;
+    margin-top: 12px;
+}
+
+/* BUTTONS */
+
+body.app-page button,
+body.app-page .btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border: none;
+    border-radius: 9px;
+    background: #795438;
+    color: white;
+    font-size: 15px;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+body.app-page button:hover,
+body.app-page .btn:hover {
+    background: #5d3e28;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(75, 52, 30, 0.15);
+}
+
+body.app-page .btn.secondary {
+    background: transparent;
+    color: #795438;
+    border: 1px solid #795438;
+}
+
+/* FORM CONTAINER */
+
+body.app-page .form-container {
+    max-width: 520px;
+    margin: 55px auto;
+    padding: 38px;
+}
+
+body.app-page .form-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+body.app-page .form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* CLOTHING IMAGES */
+
+body.app-page .clothing-image-container {
+    height: 260px;
+    background: #f3eee7;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+body.app-page .clothing-image {
+    width: 90%;
+    height: 230px;
+    object-fit: contain;
+}
+
+body.app-page .details-image-container {
+    background: #f3eee7;
+    border-radius: 15px;
+}
+
+/* ITEM DETAILS */
+
+body.app-page .item-details-card {
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 35px;
+}
+
+body.app-page #itemDetails {
+    margin: 20px auto 30px;
+}
+
+body.app-page #itemDetails .feature-card {
+    text-align: center;
+    padding: 30px;
+}
+
+body.app-page #itemDetails h2 {
+    font-size: 25px;
+    margin-bottom: 18px;
+}
+
+body.app-page #itemDetails p {
+    margin: 9px 0;
+    color: #514536;
+}
+
+/* SEARCH SUGGESTIONS */
+
+body.app-page .clothing-search-container {
+    position: relative;
+    width: 100%;
+    margin: 10px 0 22px;
+}
+
+body.app-page #offeredItemSearch {
+    width: 100%;
+    padding: 16px 18px;
+    margin: 8px 0 0;
+    border: 1px solid #d9c7b5;
+    border-radius: 12px;
+    background: white;
+    font-size: 16px;
+}
+
+body.app-page #clothingSuggestions {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: white;
+    border: 1px solid #e6d9cb;
+    border-radius: 12px;
+    max-height: 230px;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(60, 40, 20, 0.13);
+    display: none;
+}
+
+body.app-page .clothing-suggestion {
+    padding: 14px 17px;
+    color: #51402f;
+    font-size: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0e9e1;
+    transition: background 0.2s;
+}
+
+body.app-page .clothing-suggestion:hover {
+    background: #f6eee5;
+    color: #795438;
+}
+
+body.app-page #selectedClothing {
+    color: #47734b;
+    font-size: 14px;
+    font-weight: 650;
+    margin-top: 10px;
+}
+
+/* MESSAGE BOX */
+
+body.app-page #message {
+    display: block;
+    width: 100%;
+    min-height: 140px;
+    padding: 16px;
+    margin: 10px 0 20px;
+    border: 1px solid #dfd2c3;
+    border-radius: 12px;
+    background: white;
+    font-size: 15px;
+    text-align: left;
+    resize: vertical;
+}
+
+/* SWAP REQUESTS */
+
+body.app-page .swap-container {
+    max-width: 1100px;
+}
+
+body.app-page .swap-container section {
+    margin-bottom: 40px;
+}
+
+body.app-page .swap-container section h2 {
+    margin-bottom: 22px;
+    font-size: 24px;
+}
+
+body.app-page .swap-card h3 {
+    margin-bottom: 15px;
+}
+
+body.app-page .swap-items {
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+body.app-page .swap-item img {
+    background: #f3eee7;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+body.app-page .swap-status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+body.app-page footer {
+    margin-top: 50px;
+    background: #382b20;
+    color: #fffaf4;
+    padding: 28px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+
+    body.app-page .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 16px 5%;
+    }
+
+    body.app-page .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    body.app-page .features,
+    body.app-page .swap-container {
+        padding: 20px 15px;
+        margin: 25px auto;
+    }
+
+    body.app-page .features h1,
+    body.app-page .swap-container h1 {
+        font-size: 27px;
+    }
+
+    body.app-page .form-container {
+        margin: 25px 15px;
+        padding: 25px 20px;
+    }
+
+    body.app-page .swap-items {
+        flex-direction: column;
+    }
+
+    body.app-page .swap-arrow {
+        transform: rotate(90deg);
+    }
+
+    body.app-page .swap-item {
+        width: 100%;
+    }
+
+    body.app-page button,
+    body.app-page .btn {
+        max-width: 100%;
+    }
+}
+/* Search suggestions */
+body.app-page #clothingSuggestions {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: #ffffff;
+    border: 1px solid #d5e4ff;
+    border-radius: 12px;
+    max-height: 230px;
+    overflow-y: auto;
+    box-shadow: 0 8px 22px rgba(0, 70, 180, 0.12);
+}
+
+body.app-page .clothing-suggestion {
+    padding: 14px 17px;
+    color: #1769d2;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 1px solid #edf2fa;
+}
+
+body.app-page .clothing-suggestion:hover {
+    background: #eaf2ff;
+    color: #084da8;
+}
