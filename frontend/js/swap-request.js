@@ -31,10 +31,175 @@ let selectedClothingItem = null;
 // ==========================================
 
 if (!token || !currentUser) {
-    alert("Please login first.");
-    window.location.href = "login.html";
-}
 
+    const currentPage = window.location.pathname.split("/").pop();
+    const redirectURL = currentPage + window.location.search;
+
+    sessionStorage.setItem("clothSwapRedirect", redirectURL);
+
+    const loginPopup = document.createElement("div");
+    loginPopup.id = "loginRequiredPopup";
+
+    loginPopup.innerHTML = `
+        <div class="login-popup-overlay">
+            <div class="login-popup-card">
+
+                <div class="login-popup-icon">🔐</div>
+
+                <h2>Join ClothSwap</h2>
+
+                <h3>Ready to make a swap?</h3>
+
+                <p>
+                    Sign in to your ClothSwap account to send swap requests,
+                    connect with clothing owners and exchange your favourite styles.
+                </p>
+
+                <div class="login-popup-actions">
+
+                    <button id="loginContinueBtn">
+                        Login to Continue
+                    </button>
+
+                    <button id="createAccountBtn">
+                        Create an Account
+                    </button>
+
+                </div>
+
+                <small>
+                    Your selected swap will be waiting when you sign in.
+                </small>
+
+            </div>
+        </div>
+    `;
+
+    const popupStyles = document.createElement("style");
+
+    popupStyles.textContent = `
+        .login-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 20, 20, 0.65);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 99999;
+            backdrop-filter: blur(4px);
+        }
+
+        .login-popup-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 440px;
+            padding: 35px 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+            animation: popupAppear 0.25s ease;
+        }
+
+        .login-popup-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .login-popup-card h2 {
+            color: #8B5A2B;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .login-popup-card h3 {
+            color: #292929;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .login-popup-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .login-popup-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .login-popup-actions button {
+            width: 100%;
+            padding: 14px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        #loginContinueBtn {
+            background: #8B5A2B;
+            color: white;
+            border: 2px solid #8B5A2B;
+        }
+
+        #loginContinueBtn:hover {
+            background: #70451f;
+        }
+
+        #createAccountBtn {
+            background: white;
+            color: #8B5A2B;
+            border: 2px solid #8B5A2B;
+        }
+
+        #createAccountBtn:hover {
+            background: #fff5e9;
+        }
+
+        .login-popup-card small {
+            display: block;
+            margin-top: 20px;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        @keyframes popupAppear {
+            from {
+                opacity: 0;
+                transform: translateY(15px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-popup-card {
+                padding: 28px 20px;
+            }
+        }
+    `;
+
+    document.head.appendChild(popupStyles);
+    document.body.appendChild(loginPopup);
+
+    document.getElementById("loginContinueBtn").onclick = function () {
+        window.location.href = "login.html";
+    };
+
+    document.getElementById("createAccountBtn").onclick = function () {
+        window.location.href = "register.html";
+    };
+
+    document.body.style.overflow = "hidden";
+}
 
 // ==========================================
 // HELPER: GET OWNER ID
