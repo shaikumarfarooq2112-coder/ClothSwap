@@ -1,57 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Clothing Details - ClothSwap</title>
 
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="css/item-details.css">
 </head>
 
-<body>
+<body class="app-page">
 
+    <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
-
-        <div class="logo">
-            ClothSwap
-        </div>
+        <div class="logo">ClothSwap</div>
 
         <div class="nav-links">
-
             <a href="index.html">Home</a>
-
-            <a href="listings.html">
-                Browse Clothes
-            </a>
-
-            <a href="dashboard.html">
-                Dashboard
-            </a>
-
+            <a href="listings.html">Browse Clothes</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="swap-requests.html">My Swaps</a>
         </div>
-
     </nav>
 
+    <main class="details-page">
 
-    <main>
+        <!-- CLOTHING DETAILS -->
+        <section class="details-wrapper">
 
-        <div id="itemContainer">
+            <div class="details-heading">
+                <span>DISCOVER YOUR NEXT SWAP</span>
+                <h1>Clothing Details</h1>
+                <p>Explore the item and see if it's your next favourite find.</p>
+            </div>
 
-            <p>Loading clothing details...</p>
+            <div id="itemContainer" class="item-container">
+                <div class="details-loading">
+                    <p>Loading clothing details...</p>
+                </div>
+            </div>
 
-        </div>
+        </section>
+
+        <!-- BOTTOM BANNER -->
+        <section class="details-bottom-banner">
+            <h2>Love it? Make it your next swap!</h2>
+            <p>Give your unused clothes a new home and discover something different.</p>
+            <a href="listings.html">Explore More Clothes</a>
+        </section>
 
     </main>
 
+    <!-- FOOTER -->
+    <footer class="details-footer">
+        <h2>ClothSwap</h2>
+        <p>Swap more. Waste less. Style better.</p>
+        <p>© 2026 ClothSwap. All rights reserved.</p>
+    </footer>
 
     <script src="js/item-details.js"></script>
 
 </body>
-
 </html>

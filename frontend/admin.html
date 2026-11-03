@@ -1,209 +1,146 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Panel - ClothSwap</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Admin Dashboard - ClothSwap</title>
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
-
-        <div class="logo">
-            ClothSwap Admin
-        </div>
+        <a href="index.html" class="logo">ClothSwap<span>.</span> <small>ADMIN</small></a>
 
         <div class="nav-links">
-
             <a href="index.html">Home</a>
-
             <a href="dashboard.html">Dashboard</a>
-
             <a href="listings.html">Browse Clothes</a>
-
-            <button onclick="logout()">
-                Logout
-            </button>
-
+            <button onclick="logout()" class="logout-btn">Logout</button>
         </div>
-
     </nav>
 
+    <main class="admin-page">
 
-    <!-- ADMIN PANEL -->
+        <section class="welcome-section">
+            <div>
+                <p class="eyebrow">CLOTHSWAP MANAGEMENT</p>
+                <h1>Admin Dashboard</h1>
+                <p>Monitor users, clothing listings and swap activities.</p>
+            </div>
+            <div class="admin-icon">⚙</div>
+        </section>
 
-    <section class="features">
+        <section class="section-heading">
+            <div>
+                <h2>Platform Overview</h2>
+                <p>Statistics about your marketplace</p>
+            </div>
+        </section>
 
-        <h1>🛠️ Admin Panel</h1>
+        <section class="stats-grid">
 
-        <p>
-            Manage users, clothing listings and swap requests.
-        </p>
-
-
-        <!-- ===================================== -->
-        <!-- STATISTICS -->
-        <!-- ===================================== -->
-
-        <div class="feature-container">
-
-            <div class="feature-card">
-
-                <h2>Total Users</h2>
-
-                <h1 id="totalUsers">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <p>Total Users</p>
+                <h2 id="totalUsers">-</h2>
             </div>
 
-
-            <div class="feature-card">
-
-                <h2>Total Listings</h2>
-
-                <h1 id="totalListings">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">👕</div>
+                <p>Total Listings</p>
+                <h2 id="totalListings">-</h2>
             </div>
 
-
-            <div class="feature-card">
-
-                <h2>Available Listings</h2>
-
-                <h1 id="availableListings">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">🟢</div>
+                <p>Available Listings</p>
+                <h2 id="availableListings">-</h2>
             </div>
 
-
-            <div class="feature-card">
-
-                <h2>Swapped Listings</h2>
-
-                <h1 id="swappedListings">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">🔄</div>
+                <p>Swapped Listings</p>
+                <h2 id="swappedListings">-</h2>
             </div>
 
-
-            <div class="feature-card">
-
-                <h2>Total Swap Requests</h2>
-
-                <h1 id="totalSwapRequests">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">📩</div>
+                <p>Total Swap Requests</p>
+                <h2 id="totalSwapRequests">-</h2>
             </div>
 
-
-            <div class="feature-card">
-
-                <h2>Pending Requests</h2>
-
-                <h1 id="pendingRequests">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <p>Pending Requests</p>
+                <h2 id="pendingRequests">-</h2>
             </div>
 
-
-            <div class="feature-card">
-
-                <h2>Accepted Requests</h2>
-
-                <h1 id="acceptedRequests">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <p>Accepted Requests</p>
+                <h2 id="acceptedRequests">-</h2>
             </div>
 
-
-            <div class="feature-card">
-
-                <h2>Rejected Requests</h2>
-
-                <h1 id="rejectedRequests">
-                    -
-                </h1>
-
+            <div class="stat-card">
+                <div class="stat-icon">❌</div>
+                <p>Rejected Requests</p>
+                <h2 id="rejectedRequests">-</h2>
             </div>
 
-        </div>
+        </section>
 
-
-        <!-- ===================================== -->
-        <!-- USERS -->
-        <!-- ===================================== -->
-
-        <div class="feature-card" style="margin-top: 30px;">
-
-            <h2>👥 All Users</h2>
-
-            <div id="usersContainer">
-
-                <p>
-                    Loading users...
-                </p>
-
+        <section class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <h2>All Users</h2>
+                    <p>Registered ClothSwap members</p>
+                </div>
+                <span class="section-icon">👥</span>
             </div>
 
-        </div>
+            <div id="usersContainer" class="admin-list">
+                <p class="loading-message">Loading users...</p>
+            </div>
+        </section>
 
-
-        <!-- ===================================== -->
-        <!-- LISTINGS -->
-        <!-- ===================================== -->
-
-        <div class="feature-card" style="margin-top: 30px;">
-
-            <h2>👕 All Clothing Listings</h2>
-
-            <div id="listingsContainer">
-
-                <p>
-                    Loading listings...
-                </p>
-
+        <section class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <h2>All Clothing Listings</h2>
+                    <p>Manage items listed on the marketplace</p>
+                </div>
+                <span class="section-icon">👕</span>
             </div>
 
-        </div>
+            <div id="listingsContainer" class="admin-list">
+                <p class="loading-message">Loading listings...</p>
+            </div>
+        </section>
 
-
-        <!-- ===================================== -->
-        <!-- SWAP REQUESTS -->
-        <!-- ===================================== -->
-
-        <div class="feature-card" style="margin-top: 30px;">
-
-            <h2>🔄 All Swap Requests</h2>
-
-            <div id="swapsContainer">
-
-                <p>
-                    Loading swap requests...
-                </p>
-
+        <section class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <h2>All Swap Requests</h2>
+                    <p>Track exchange requests between members</p>
+                </div>
+                <span class="section-icon">🔄</span>
             </div>
 
-        </div>
+            <div id="swapsContainer" class="admin-list">
+                <p class="loading-message">Loading swap requests...</p>
+            </div>
+        </section>
 
-    </section>
+        <footer class="admin-footer">
+            ClothSwap Admin Dashboard · Making fashion more sustainable.
+        </footer>
 
+    </main>
 
     <script src="js/admin.js"></script>
 
 </body>
-
 </html>

@@ -1,148 +1,144 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Location Matching - ClothSwap</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/location.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
-
-        <div class="logo">
-            ClothSwap
-        </div>
+        <a href="index.html" class="logo">ClothSwap<span>.</span></a>
 
         <div class="nav-links">
-
             <a href="index.html">Home</a>
-
             <a href="listings.html">Browse Clothes</a>
-
             <a href="dashboard.html">Dashboard</a>
-
             <a href="swap-requests.html">Swap Requests</a>
-
             <a href="swap-value.html">Value Calculator</a>
-
         </div>
-
     </nav>
 
+    <main class="page-container">
 
-    <!-- LOCATION SEARCH -->
-    <section class="features">
-
-        <h1>📍 Find Clothes Near You</h1>
-
-        <p>
-            Find available clothing items based on your location.
-        </p>
-
-
-        <div class="feature-card">
-
-            <form id="locationForm">
-
-                <!-- CITY -->
-                <label for="city">
-                    City
-                </label>
-
-                <input
-                    type="text"
-                    id="city"
-                    placeholder="Example: Sullurpeta"
-                >
-
-
-                <!-- STATE -->
-                <label for="state">
-                    State
-                </label>
-
-                <input
-                    type="text"
-                    id="state"
-                    placeholder="Example: Andhra Pradesh"
-                >
-
-
-                <!-- CATEGORY -->
-                <label for="category">
-                    Category
-                </label>
-
-                <select id="category">
-
-                    <option value="">
-                        All Categories
-                    </option>
-
-                    <option value="T-Shirts">
-                        T-Shirts
-                    </option>
-
-                    <option value="Shirts">
-                        Shirts
-                    </option>
-
-                    <option value="Jeans">
-                        Jeans
-                    </option>
-
-                    <option value="Jackets">
-                        Jackets
-                    </option>
-
-                    <option value="Dresses">
-                        Dresses
-                    </option>
-
-                    <option value="Sportswear">
-                        Sportswear
-                    </option>
-
-                </select>
-
-
-                <button
-                    type="submit"
-                    class="btn">
-
-                    🔍 Find Clothes
-
-                </button>
-
-            </form>
-
-        </div>
-
-
-        <!-- RESULTS -->
-
-        <div
-            id="locationResults"
-            class="feature-container"
-            style="margin-top: 30px;">
-
+        <section class="page-intro">
+            <span class="eyebrow">LOCAL CLOTHING EXCHANGE</span>
+            <h1>Find Clothes <span>Near You</span></h1>
             <p>
-                Enter a location and search for clothes.
+                Discover available clothing items in your city
+                and find nearby swapping opportunities.
             </p>
+        </section>
 
-        </div>
+        <section class="location-layout">
 
-    </section>
+            <div class="search-card">
 
+                <div class="card-heading">
+                    <div class="location-icon">📍</div>
+                    <div>
+                        <h2>Search by Location</h2>
+                        <p>Enter your preferred location and clothing category.</p>
+                    </div>
+                </div>
+
+                <form id="locationForm">
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="Example: Sullurpeta"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input
+                            type="text"
+                            id="state"
+                            placeholder="Example: Andhra Pradesh"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Clothing Category</label>
+                        <select id="category">
+                            <option value="">All Categories</option>
+                            <option value="T-Shirts">T-Shirts</option>
+                            <option value="Shirts">Shirts</option>
+                            <option value="Jeans">Jeans</option>
+                            <option value="Jackets">Jackets</option>
+                            <option value="Dresses">Dresses</option>
+                            <option value="Sportswear">Sportswear</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="search-btn">
+                        <span>⌕</span> Find Clothes
+                    </button>
+
+                </form>
+
+                <p class="privacy-note">
+                    Search using the city and state you enter.
+                    Your device location is not required.
+                </p>
+
+            </div>
+
+            <aside class="location-info">
+                <div class="info-illustration">🌍</div>
+                <h2>Swap Locally, Live Sustainably</h2>
+                <p>
+                    Find clothes in your preferred area and make
+                    clothing exchanges more convenient.
+                </p>
+
+                <div class="benefit">
+                    <span>✓</span>
+                    Discover local clothing listings
+                </div>
+
+                <div class="benefit">
+                    <span>✓</span>
+                    Filter by clothing category
+                </div>
+
+                <div class="benefit">
+                    <span>✓</span>
+                    Explore sustainable fashion
+                </div>
+            </aside>
+
+        </section>
+
+        <section class="results-section">
+            <div class="results-heading">
+                <h2>Search Results</h2>
+                <p>Clothing items matching your search will appear here.</p>
+            </div>
+
+            <div id="locationResults" class="feature-container">
+                <div class="empty-state">
+                    <div>🔎</div>
+                    <h3>Ready to explore?</h3>
+                    <p>Enter a city and search to discover available clothes.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 ClothSwap. Give clothes a second life.</p>
+    </footer>
 
     <script src="js/location.js"></script>
 
 </body>
-
 </html>

@@ -1,52 +1,145 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - ClothSwap</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <title>Create Account - ClothSwap</title>
+
+    <link rel="stylesheet" href="css/register.css">
 </head>
 
 <body>
 
-<nav class="navbar">
-    <div class="logo">ClothSwap</div>
+    <nav class="navbar">
+        <a href="index.html" class="logo">ClothSwap<span>.</span></a>
 
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="login.html">Login</a>
-    </div>
-</nav>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
 
-<div class="form-container">
+    <main class="register-page">
 
-    <h1>Create Account</h1>
+        <section class="register-banner">
+            <div class="banner-content">
+                <p class="eyebrow">JOIN THE CLOTHSWAP COMMUNITY</p>
 
-    <form id="registerForm">
+                <h1>One wardrobe.<br>
+                    <span>Endless possibilities.</span>
+                </h1>
 
-        <input id="name" type="text" placeholder="Full Name" required>
+                <p>
+                    Create your account, share clothes you no longer wear,
+                    and discover pre-loved fashion from other members.
+                </p>
 
-        <input id="email" type="email" placeholder="Email" required>
+                <div class="banner-highlight">
+                    ♻️ Swap clothes. Share style. Reduce waste.
+                </div>
+            </div>
+        </section>
 
-        <input id="password" type="password" placeholder="Password" required>
+        <section class="register-form-section">
 
-        <input id="phone" type="text" placeholder="Phone">
+            <div class="register-card">
 
-        <input id="city" type="text" placeholder="City">
+                <div class="form-icon">✨</div>
 
-        <input id="state" type="text" placeholder="State">
+                <p class="form-eyebrow">GET STARTED FOR FREE</p>
 
-        <button type="submit" class="btn">
-            Register
-        </button>
+                <h2>Create Account</h2>
 
-    </form>
+                <p class="form-description">
+                    Join ClothSwap and start your swapping journey.
+                </p>
 
-    <p id="message"></p>
+                <form id="registerForm">
 
-</div>
+                    <label for="name">Full Name</label>
+                    <input
+                        id="name"
+                        type="text"
+                        placeholder="Enter your full name"
+                        required
+                    >
 
-<script src="js/auth.js"></script>
+                    <label for="email">Email Address</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                    <label for="password">Password</label>
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                    <label for="phone">Phone Number</label>
+                    <input
+                        id="phone"
+                        type="text"
+                        placeholder="Enter your phone number"
+                    >
+
+                    <div class="location-fields">
+
+                        <div>
+                            <label for="city">City</label>
+                            <input
+                                id="city"
+                                type="text"
+                                placeholder="Your city"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="state">State</label>
+                            <input
+                                id="state"
+                                type="text"
+                                placeholder="Your state"
+                            >
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="register-button">
+                        Create My Account →
+                    </button>
+
+                </form>
+
+                <p id="message" class="form-message"></p>
+
+                <div class="login-prompt">
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                </div>
+
+                <a href="index.html" class="home-link">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="register-footer">
+        © 2026 ClothSwap. Making fashion more sustainable.
+    </footer>
+
+    <script src="js/auth.js"></script>
 
 </body>
 </html>

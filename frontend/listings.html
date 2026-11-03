@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,85 @@
     <title>Browse Clothes - ClothSwap</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/listings.css">
 </head>
 
-<body>
+<body class="app-page">
 
-<nav class="navbar">
+    <nav class="navbar">
+        <div class="logo">ClothSwap</div>
 
-    <div class="logo">ClothSwap</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="swap-requests.html">My Swaps</a>
+        </div>
+    </nav>
 
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="swap-requests.html">Swaps</a>
-    </div>
+    <main class="browse-page">
 
-</nav>
+        <section class="browse-hero">
+            <div class="browse-hero-content">
+                <span class="browse-tag">PRE-LOVED. RE-LOVED.</span>
 
+                <h1>Find Clothes.<br><span>Swap Your Style.</span></h1>
 
-<section class="features">
+                <p>
+                    Explore unique styles, discover clothes you love,
+                    and give your wardrobe a fresh look through swapping.
+                </p>
 
-    <h1>Available Clothes</h1>
+                <div class="browse-search">
+                    <input
+                        type="text"
+                        id="clothingSearch"
+                        placeholder="Search by clothing name or brand..."
+                        autocomplete="off"
+                    >
+                    <div id="searchSuggestions"></div>
+                </div>
+            </div>
+        </section>
 
-    <div id="clothingContainer"
-         class="feature-container">
-    </div>
+        <section class="browse-listings">
 
-</section>
+            <div class="listings-heading">
+                <div>
+                    <span class="section-label">EXPLORE THE COLLECTION</span>
+                    <h2>Browse All Clothes</h2>
+                    <p>Find something special for your next swap.</p>
+                </div>
 
+                <a href="add-clothing.html" class="add-clothes-btn">
+                    + Add Your Clothes
+                </a>
+            </div>
 
-<script src="js/listings.js"></script>
+            <div id="clothingContainer" class="feature-container">
+                <p class="loading-message">Loading clothes...</p>
+            </div>
+
+        </section>
+
+        <section class="swap-banner">
+            <div>
+                <span>GIVE CLOTHES A SECOND LIFE</span>
+                <h2>Your next favourite outfit could be a swap away.</h2>
+                <p>List clothes you no longer wear and discover something new.</p>
+            </div>
+
+            <a href="add-clothing.html">List Your Clothes</a>
+        </section>
+
+    </main>
+
+    <footer class="listings-footer">
+        <h2>ClothSwap</h2>
+        <p>Swap more. Waste less. Style better.</p>
+        <p>© 2026 ClothSwap. All rights reserved.</p>
+    </footer>
+
+    <script src="js/listings.js"></script>
 
 </body>
 </html>

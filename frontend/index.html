@@ -1,138 +1,213 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>ClothSwap - Clothing Exchange Marketplace</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClothSwap | Fashion Exchange Marketplace</title>
+    <link rel="stylesheet" href="css/home.css">
 </head>
-
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVIGATION -->
     <nav class="navbar">
-
-        <div class="logo">
-            ClothSwap
-        </div>
+        <a href="index.html" class="logo">Cloth<span>Swap</span></a>
 
         <div class="nav-links">
+            <a class="active" href="index.html">Home</a>
+            <a href="listings.html">Browse Clothes</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" class="nav-register">Join ClothSwap</a>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">✨ FASHION WITH A SECOND LIFE</span>
+            <h1>New looks.<br><span>New stories.</span></h1>
+            <p>
+                Refresh your wardrobe without buying new.
+                Discover pre-loved fashion and swap clothes
+                with people in your community.
+            </p>
+            <div class="hero-buttons">
+                <a href="listings.html" class="btn primary-btn">Explore Clothes →</a>
+                <a href="register.html" class="btn outline-btn">Start Swapping</a>
+            </div>
+            <div class="hero-note">♻️ Swap more. Waste less. Dress better.</div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section categories-section">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">FIND YOUR STYLE</span>
+                <h2>Explore Categories</h2>
+            </div>
+            <a href="listings.html" class="view-all">View all →</a>
+        </div>
+
+        <div class="category-grid">
+            <a href="listings.html" class="category-card">
+                <span>👕</span><h3>T-Shirts</h3>
+            </a>
+            <a href="listings.html" class="category-card">
+                <span>👔</span><h3>Shirts</h3>
+            </a>
+            <a href="listings.html" class="category-card">
+                <span>👖</span><h3>Jeans</h3>
+            </a>
+            <a href="listings.html" class="category-card">
+                <span>👗</span><h3>Dresses</h3>
+            </a>
+            <a href="listings.html" class="category-card">
+                <span>🧥</span><h3>Jackets</h3>
+            </a>
+            <a href="listings.html" class="category-card">
+                <span>🥻</span><h3>Ethnic Wear</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURED CLOTHES -->
+    <section class="section products-section">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">HANDPICKED FOR YOU</span>
+                <h2>Today's Picks</h2>
+                <p class="section-subtitle">Discover something special from our community.</p>
+            </div>
+            <a href="listings.html" class="view-all">Browse all clothes →</a>
+        </div>
+
+        <div id="featuredProducts" class="product-grid">
+            <p class="loading-message">Discovering beautiful clothes...</p>
+        </div>
+    </section>
+
+    <!-- PROMOTIONAL BANNER -->
+    <section class="promo-banner">
+        <div>
+            <span class="eyebrow">YOUR WARDROBE, REIMAGINED</span>
+            <h2>Love fashion.<br>Choose a better way.</h2>
+            <p>Give your unused clothes a new home and find your next favourite outfit.</p>
+            <a href="register.html" class="btn promo-btn">Join the Community →</a>
+        </div>
+        <div class="promo-decoration">♻️</div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section">
+        <div class="center-heading">
+            <span class="eyebrow">SIMPLE. SOCIAL. SUSTAINABLE.</span>
+            <h2>How ClothSwap Works</h2>
+            <p>Three easy steps to a refreshed wardrobe.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-icon">📸</span>
+                <span class="step-number">01</span>
+                <h3>List Your Clothes</h3>
+                <p>Upload pictures and details of clothes you are ready to exchange.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-icon">🔎</span>
+                <span class="step-number">02</span>
+                <h3>Discover & Choose</h3>
+                <p>Explore clothes listed by other members of the community.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-icon">🔄</span>
+                <span class="step-number">03</span>
+                <h3>Swap & Enjoy</h3>
+                <p>Send a swap request, connect with the owner and refresh your style.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="community-banner">
+        <h2>Make room for something new.</h2>
+        <p>Your next favourite outfit could be waiting in someone else's wardrobe.</p>
+        <a href="listings.html" class="btn primary-btn">Find Your Next Look →</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <a href="index.html" class="logo">Cloth<span>Swap</span></a>
+        <p>Fashion goes further when we share. ♻️</p>
+        <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="listings.html">Browse Clothes</a>
             <a href="login.html">Login</a>
             <a href="register.html">Register</a>
         </div>
-
-    </nav>
-
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <h1>
-                Swap Clothes.<br>
-                Refresh Your Style.
-            </h1>
-
-            <p>
-                Exchange clothes with people in your community
-                and give your wardrobe a second life.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="listings.html"
-                   class="btn">
-                    Browse Clothes
-                </a>
-
-                <a href="register.html"
-                   class="btn secondary">
-                    Start Swapping
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FEATURES -->
-    <section class="features">
-
-        <h2>How ClothSwap Works</h2>
-
-        <div class="feature-container">
-
-            <div class="feature-card">
-
-                <h3>👕 List Your Clothes</h3>
-
-                <p>
-                    Upload your unused clothes with
-                    details about size, brand and condition.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <h3>🔍 Find Clothes</h3>
-
-                <p>
-                    Browse clothing items from other
-                    users and find something you like.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <h3>🔄 Send a Swap Request</h3>
-
-                <p>
-                    Offer your clothing item and negotiate
-                    directly with another user.
-                </p>
-
-            </div>
-
-
-            <div class="feature-card">
-
-                <h3>🌱 Sustainable Fashion</h3>
-
-                <p>
-                    Reuse clothing, reduce textile waste
-                    and promote sustainable fashion.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <p>
-            © 2026 ClothSwap. Sustainable fashion through swapping.
-        </p>
-
+        <small>© 2026 ClothSwap. Sustainable fashion through swapping.</small>
     </footer>
 
-</body>
+    <script>
+        const API = "https://clothswap-backend-ul42.onrender.com/api";
 
+        async function loadFeaturedProducts() {
+            const container = document.getElementById("featuredProducts");
+
+            try {
+                const response = await fetch(`${API}/clothing`);
+                if (!response.ok) throw new Error("Unable to load clothes");
+
+                const result = await response.json();
+                const clothes = (result.clothing || [])
+                    .filter(item => item.status === "available")
+                    .slice(0, 4);
+
+                if (!clothes.length) {
+                    container.innerHTML = '<p class="loading-message">No clothes available yet. Check back soon!</p>';
+                    return;
+                }
+
+                container.innerHTML = clothes.map(item => {
+                    const image = item.images && item.images.length
+                        ? item.images[0]
+                        : "";
+
+                    const safe = value => String(value || "").replace(/[&<>"']/g, char => ({
+                        "&": "&amp;", "<": "&lt;", ">": "&gt;",
+                        '"': "&quot;", "'": "&#39;"
+                    }[char]));
+
+                    return `
+                        <a class="product-card" href="item-details.html?id=${encodeURIComponent(item._id)}">
+                            <div class="product-image">
+                                ${image
+                                    ? `<img src="${safe(image)}" alt="${safe(item.title)}" loading="lazy">`
+                                    : `<div class="image-placeholder">👕</div>`}
+                                <span class="product-tag">Available to swap</span>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">${safe(item.category)}</span>
+                                <h3>${safe(item.title)}</h3>
+                                <p>${safe(item.brand)}</p>
+                                <div class="product-bottom">
+                                    <strong>Est. value ₹${Number(item.estimatedValue || 0).toLocaleString("en-IN")}</strong>
+                                    <span>View item →</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }).join("");
+
+            } catch (error) {
+                console.error("Featured clothes error:", error);
+                container.innerHTML = '<p class="loading-message">Clothes could not be loaded right now. <a href="listings.html">Browse all clothes</a>.</p>';
+            }
+        }
+
+        loadFeaturedProducts();
+    </script>
+
+</body>
 </html>

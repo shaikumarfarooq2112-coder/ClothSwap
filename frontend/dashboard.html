@@ -1,62 +1,132 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard - ClothSwap</title>
+    <title>My Dashboard - ClothSwap</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
-<body>
+<body class="app-page">
 
-<nav class="navbar">
+    <nav class="navbar">
+        <div class="logo">ClothSwap</div>
 
-    <div class="logo">ClothSwap</div>
-
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="listings.html">Browse Clothes</a>
-        <a href="add-clothing.html">List Clothing</a>
-        <a href="swap-requests.html">Swap Requests</a>
-        <a href="swap-value.html">Value Calculator</a>
-        <a href="location.html">📍 Find Nearby</a>
-        <button onclick="logout()">Logout</button>
-    </div>
-
-</nav>
-
-
-<section class="features">
-
-    <h1>My Dashboard</h1>
-
-    <div class="feature-container">
-
-        <div class="feature-card">
-            <h2>Welcome</h2>
-            <p id="userName">Loading...</p>
-            <p id="userEmail"></p>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="listings.html">Browse Clothes</a>
+            <a href="add-clothing.html">List Clothing</a>
+            <a href="swap-requests.html">Swap Requests</a>
+            <a href="swap-value.html">Value Calculator</a>
+            <a href="location.html">Find Nearby</a>
+            <button onclick="logout()">Logout</button>
         </div>
+    </nav>
 
-        <div class="feature-card">
-            <h2>My Listings</h2>
-            <p id="listingCount">Loading...</p>
-        </div>
+    <main class="dashboard-page">
 
-        <div class="feature-card">
-            <h2>Swap Requests</h2>
-            <p id="swapCount">Loading...</p>
-        </div>
+        <section class="dashboard-welcome">
+            <div>
+                <span>YOUR CLOTHSWAP SPACE</span>
+                <h1>My Dashboard</h1>
+                <p>Manage your clothes, discover swaps, and refresh your style.</p>
+            </div>
 
-    </div>
+            <a href="add-clothing.html" class="dashboard-add-btn">
+                + List Your Clothes
+            </a>
+        </section>
 
-</section>
+        <section class="dashboard-stats">
 
+            <div class="dashboard-card welcome-card">
+                <div class="dashboard-icon">👋</div>
+                <h2>Welcome Back!</h2>
+                <p id="userName">Loading...</p>
+                <p id="userEmail"></p>
+            </div>
 
-<script src="js/dashboard.js"></script>
+            <div class="dashboard-card">
+                <div class="dashboard-icon">👕</div>
+                <h2>My Listings</h2>
+                <p class="dashboard-number" id="listingCount">Loading...</p>
+                <span>Your clothing items</span>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-icon">🔄</div>
+                <h2>Swap Requests</h2>
+                <p class="dashboard-number" id="swapCount">Loading...</p>
+                <span>Your swap activity</span>
+            </div>
+
+        </section>
+
+        <section class="dashboard-actions">
+            <div class="dashboard-section-heading">
+                <span>QUICK ACCESS</span>
+                <h2>What would you like to do?</h2>
+            </div>
+
+            <div class="dashboard-action-grid">
+
+                <a href="listings.html" class="action-card">
+                    <div class="action-icon">🛍️</div>
+                    <h3>Browse Clothes</h3>
+                    <p>Discover clothes listed by other users.</p>
+                    <span>Explore Now →</span>
+                </a>
+
+                <a href="add-clothing.html" class="action-card">
+                    <div class="action-icon">➕</div>
+                    <h3>List Clothing</h3>
+                    <p>Add your unused clothes for swapping.</p>
+                    <span>Add an Item →</span>
+                </a>
+
+                <a href="swap-requests.html" class="action-card">
+                    <div class="action-icon">🔄</div>
+                    <h3>Swap Requests</h3>
+                    <p>View and manage your swap requests.</p>
+                    <span>View Requests →</span>
+                </a>
+
+                <a href="swap-value.html" class="action-card">
+                    <div class="action-icon">⚖️</div>
+                    <h3>Value Calculator</h3>
+                    <p>Compare clothing values for a fair swap.</p>
+                    <span>Compare Values →</span>
+                </a>
+
+                <a href="location.html" class="action-card">
+                    <div class="action-icon">📍</div>
+                    <h3>Find Nearby</h3>
+                    <p>Explore nearby clothing swap opportunities.</p>
+                    <span>Explore Nearby →</span>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="dashboard-bottom">
+            <h2>Ready for a wardrobe refresh?</h2>
+            <p>Give your unused clothes a new home and find something you love.</p>
+            <a href="listings.html">Start Exploring</a>
+        </section>
+
+    </main>
+
+    <footer class="dashboard-footer">
+        <h2>ClothSwap</h2>
+        <p>Swap more. Waste less. Style better.</p>
+        <p>© 2026 ClothSwap. All rights reserved.</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
 
 </body>
 </html>

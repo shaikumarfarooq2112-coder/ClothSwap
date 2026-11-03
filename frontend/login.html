@@ -1,59 +1,110 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login - ClothSwap</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
 
-<nav class="navbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">ClothSwap<span>.</span></a>
 
-    <div class="logo">ClothSwap</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="register.html">Create Account</a>
+        </div>
+    </nav>
 
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="register.html">Register</a>
-    </div>
+    <main class="login-page">
 
-</nav>
+        <section class="login-banner">
+            <div class="banner-content">
+                <p class="eyebrow">WELCOME TO CLOTHSWAP</p>
 
+                <h1>Refresh your wardrobe.<br>
+                    <span>Swap with purpose.</span>
+                </h1>
 
-<div class="form-container">
+                <p>
+                    Give your pre-loved clothes a new home and discover
+                    something special from someone else's wardrobe.
+                </p>
 
-    <h1>Login</h1>
+                <div class="banner-highlight">
+                    ♻️ Wear more. Waste less. Swap better.
+                </div>
+            </div>
+        </section>
 
-    <form id="loginForm">
+        <section class="login-form-section">
 
-        <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            required
-        >
+            <div class="login-card">
 
-        <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            required
-        >
+                <div class="form-icon">👋</div>
 
-        <button class="btn" type="submit">
-            Login
-        </button>
+                <p class="form-eyebrow">YOUR CLOTHSWAP ACCOUNT</p>
 
-    </form>
+                <h2>Welcome Back!</h2>
 
-    <p id="message"></p>
+                <p class="form-description">
+                    Sign in to continue your swapping journey.
+                </p>
 
-</div>
+                <form id="loginForm">
 
-<script src="js/auth.js"></script>
+                    <label for="email">Email Address</label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                    <label for="password">Password</label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <button class="login-button" type="submit">
+                        Login to ClothSwap →
+                    </button>
+
+                </form>
+
+                <p id="message" class="form-message"></p>
+
+                <div class="register-prompt">
+                    Don't have an account?
+                    <a href="register.html">Create one</a>
+                </div>
+
+                <a href="index.html" class="home-link">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="login-footer">
+        © 2026 ClothSwap. Making fashion more sustainable.
+    </footer>
+
+    <script src="js/auth.js"></script>
 
 </body>
 </html>

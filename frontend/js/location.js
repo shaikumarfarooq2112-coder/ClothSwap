@@ -1,3 +1,4 @@
+
 const API = "https://clothswap-backend-ul42.onrender.com/api";
 
 
@@ -13,6 +14,28 @@ if (!token) {
 
 
 // ========================================
+// IMAGE URL HANDLER
+// ========================================
+
+function getImageUrl(imagePath) {
+
+    if (!imagePath) {
+        return "";
+    }
+
+    // Cloudinary and other complete image URLs
+    if (/^https?:\/\//i.test(imagePath)) {
+        return imagePath;
+    }
+
+    // Older images stored on the backend
+    const backendURL = "https://clothswap-backend-ul42.onrender.com";
+
+    return `${backendURL}${imagePath.startsWith("/") ? "" : "/"}${imagePath}`;
+}
+
+
+// ========================================
 // LOCATION SEARCH
 // ========================================
 
@@ -21,7 +44,6 @@ document
     .addEventListener("submit", async function (event) {
 
         event.preventDefault();
-
 
         const city =
             document.getElementById("city").value.trim();
@@ -32,18 +54,18 @@ document
         const category =
             document.getElementById("category").value;
 
-
         const results =
             document.getElementById("locationResults");
 
 
-        // Check location
+        // ========================================
+        // CHECK LOCATION
+        // ========================================
+
         if (!city && !state) {
 
             results.innerHTML = `
-                <p>
-                    Please enter a city or state.
-                </p>
+                <p>Please enter a city or state.</p>
             `;
 
             return;
@@ -51,9 +73,7 @@ document
 
 
         results.innerHTML = `
-            <p>
-                Searching for clothes...
-            </p>
+            <p>Searching for clothes...</p>
         `;
 
 
@@ -68,8 +88,7 @@ document
 
             if (category) {
 
-                const params =
-                    new URLSearchParams();
+                const params = new URLSearchParams();
 
                 if (city) {
                     params.append("city", city);
@@ -81,11 +100,10 @@ document
 
                 params.append("category", category);
 
-
-                url =
-                    `${API}/location/matches?${params.toString()}`;
+                url = `${API}/location/matches?${params.toString()}`;
 
             }
+
 
             // ========================================
             // LOCATION ONLY
@@ -93,8 +111,7 @@ document
 
             else {
 
-                const params =
-                    new URLSearchParams();
+                const params = new URLSearchParams();
 
                 if (city) {
                     params.append("city", city);
@@ -104,9 +121,7 @@ document
                     params.append("state", state);
                 }
 
-
-                url =
-                    `${API}/location/nearby?${params.toString()}`;
+                url = `${API}/location/nearby?${params.toString()}`;
             }
 
 
@@ -118,40 +133,37 @@ document
                 method: "GET",
 
                 headers: {
-                    Authorization:
-                        `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 }
 
             });
 
 
-            const result =
-                await response.json();
+            const result = await response.json();
 
 
-            console.log(
-                "Location result:",
-                result
-            );
+            console.log("Location result:", result);
 
+
+            // ========================================
+            // API ERROR
+            // ========================================
 
             if (!response.ok) {
 
                 results.innerHTML = `
-                    <p>
-                        ${
-                            result.message ||
-                            "Unable to find clothing."
-                        }
-                    </p>
+                    <div class="feature-card">
+                        <p>
+                            ${result.message || "Unable to find clothing."}
+                        </p>
+                    </div>
                 `;
 
                 return;
             }
 
 
-            const clothing =
-                result.clothing || [];
+            const clothing = result.clothing || [];
 
 
             // ========================================
@@ -164,13 +176,11 @@ document
 
                     <div class="feature-card">
 
-                        <h2>
-                            No Clothes Found
-                        </h2>
+                        <h2>No Clothes Found</h2>
 
                         <p>
-                            No available clothing items
-                            were found in this location.
+                            No available clothing items were found
+                            in this location.
                         </p>
 
                     </div>
@@ -190,30 +200,30 @@ document
 
             clothing.forEach(item => {
 
-                const card =
-                    document.createElement("div");
+                const card = document.createElement("div");
+
+                card.className = "feature-card";
 
 
-                card.className =
-                    "feature-card";
-
+                // ========================================
+                // IMAGE DISPLAY
+                // ========================================
 
                 let imageHTML = "";
 
+                if (item.images && item.images.length > 0) {
 
-                if (
-                    item.images &&
-                    item.images.length > 0
-                ) {
+                    const imageUrl = getImageUrl(item.images[0]);
 
                     imageHTML = `
 
                         <div class="clothing-image-container">
 
                             <img
-                                src="https://clothswap-backend-ul42.onrender.com${item.images[0]}"
+                                src="${imageUrl}"
                                 class="clothing-image"
-                                alt="${item.title}"
+                                alt="${item.title || "Clothing item"}"
+                                onerror="this.style.display='none'"
                             >
 
                         </div>
@@ -222,45 +232,42 @@ document
                 }
 
 
+                // ========================================
+                // CLOTHING DETAILS
+                // ========================================
+
                 card.innerHTML = `
 
                     ${imageHTML}
 
-
                     <h2>
-                        ${item.title}
+                        ${item.title || "Untitled Item"}
                     </h2>
-
 
                     <p>
                         <strong>Brand:</strong>
                         ${item.brand || "Not specified"}
                     </p>
 
-
                     <p>
                         <strong>Category:</strong>
                         ${item.category || "Not specified"}
                     </p>
-
 
                     <p>
                         <strong>Size:</strong>
                         ${item.size || "Not specified"}
                     </p>
 
-
                     <p>
                         <strong>Condition:</strong>
                         ${item.condition || "Not specified"}
                     </p>
 
-
                     <p>
                         <strong>Estimated Value:</strong>
                         ₹${item.estimatedValue || 0}
                     </p>
-
 
                     <p>
                         📍
@@ -270,12 +277,10 @@ document
                             : ""}
                     </p>
 
-
                     <p>
                         <strong>Owner:</strong>
                         ${item.owner?.name || "Unknown"}
                     </p>
-
 
                     <button
                         class="btn"
@@ -292,30 +297,32 @@ document
 
             });
 
-        } catch (error) {
+        }
 
-            console.error(
-                "Location search error:",
-                error
-            );
 
+        // ========================================
+        // ERROR HANDLING
+        // ========================================
+
+        catch (error) {
+
+            console.error("Location search error:", error);
 
             results.innerHTML = `
 
                 <div class="feature-card">
 
-                    <p>
-                        Unable to connect to server.
-                    </p>
+                    <h2>Unable to Connect</h2>
 
                     <p>
-                        Make sure your backend
-                        server is running.
+                        Unable to connect to the server.
+                        Please try again.
                     </p>
 
                 </div>
 
             `;
+
         }
 
     });
@@ -327,6 +334,6 @@ document
 
 function viewItem(id) {
 
-    window.location.href =
-        `item-details.html?id=${id}`;
+    window.location.href = `item-details.html?id=${id}`;
+
 }

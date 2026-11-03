@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,64 +6,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Chat - ClothSwap</title>
+    <title>Swap Chat - ClothSwap</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
 </head>
 
 <body>
 
-<nav class="navbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">ClothSwap<span>.</span></a>
 
-    <div class="logo">
-        ClothSwap
-    </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="listings.html">Browse Clothes</a>
+            <a href="swap-requests.html">Swap Requests</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+    </nav>
 
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="listings.html">Browse Clothes</a>
-        <a href="swap-requests.html">Swap Requests</a>
-    </div>
+    <main class="chat-page">
 
-</nav>
+        <div class="chat-heading">
+            <div>
+                <p class="eyebrow">CLOTHSWAP COMMUNITY</p>
+                <h1>Swap Chat</h1>
+                <p class="heading-description">
+                    Connect with your swap partner and discuss your exchange.
+                </p>
+            </div>
 
-
-<section class="features">
-
-    <h1>Swap Chat</h1>
-
-    <div id="chatContainer">
-
-        <p id="chatStatus">
-            Loading chat...
-        </p>
-
-        <div id="messagesContainer"></div>
-
-        <div class="chat-input-container">
-
-            <input
-                type="text"
-                id="messageInput"
-                placeholder="Type your message..."
-            >
-
-            <button
-                class="btn"
-                onclick="sendMessage()">
-                Send
-            </button>
-
+            <a href="swap-requests.html" class="back-link">
+                ← Back to Requests
+            </a>
         </div>
 
-    </div>
+        <section class="chat-card">
 
-</section>
+            <div class="chat-card-header">
+                <div class="partner-avatar">C</div>
 
+                <div class="partner-info">
+                    <h2>Swap Conversation</h2>
+                    <p>Discuss and finalize your clothing swap</p>
+                </div>
 
-<script src="js/chat.js"></script>
+                <span class="chat-badge">Private Chat</span>
+            </div>
+
+            <div class="chat-status-bar">
+                <span class="status-dot"></span>
+                <p id="chatStatus">Loading chat...</p>
+            </div>
+
+            <div id="messagesContainer" class="messages-container">
+                <p class="empty-message">Loading messages...</p>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-container">
+                    <input
+                        type="text"
+                        id="messageInput"
+                        placeholder="Type your message here..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        class="send-button"
+                        onclick="sendMessage()">
+                        Send <span>➤</span>
+                    </button>
+                </div>
+
+                <p class="input-note">
+                    Press Enter or click Send to send your message.
+                </p>
+            </div>
+
+        </section>
+
+        <p class="chat-footer-note">
+            <span>♡</span> Good swaps begin with good conversations.
+        </p>
+
+    </main>
+
+    <script src="js/chat.js"></script>
 
 </body>
-
 </html>

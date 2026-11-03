@@ -1,0 +1,196 @@
+
+/* =====================================
+   CLOTHSWAP - CLOTHING DETAILS PAGE
+===================================== */
+
+.details-page {
+    width: 86%;
+    max-width: 1450px;
+    margin: 35px auto;
+}
+
+.details-heading {
+    margin-bottom: 30px;
+}
+
+.details-heading span {
+    color: #25816e;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.details-heading h1 {
+    color: #174e43;
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.details-heading p {
+    color: #687a73;
+    font-size: 14px;
+}
+
+/* Clothing details card */
+
+.item-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin: 25px auto 40px;
+}
+
+.item-container > .feature-card,
+.item-container > .item-card,
+.item-container > .details-card {
+    width: 100%;
+    max-width: 1000px;
+    background: #ffffff;
+    padding: 28px;
+    border: 1px solid #e6ece8;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Images */
+
+.item-container img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.clothing-image-container {
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 20px;
+}
+
+.clothing-image {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+}
+
+/* Item information */
+
+.item-container h2 {
+    color: #174e43;
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.item-container p {
+    color: #56665f;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 7px 0;
+}
+
+.item-container strong {
+    color: #234c40;
+}
+
+/* Buttons */
+
+.item-container .btn {
+    display: inline-block;
+    padding: 11px 22px;
+    margin: 12px 8px 0 0;
+    background: #25816e;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.item-container .btn:hover {
+    background: #174e43;
+}
+
+/* Loading */
+
+.details-loading {
+    text-align: center;
+    padding: 40px;
+    color: #25816e;
+}
+
+/* Bottom banner */
+
+.details-bottom-banner {
+    background: #e6f1eb;
+    border-radius: 12px;
+    padding: 30px 20px;
+    margin: 35px 0;
+    text-align: center;
+}
+
+.details-bottom-banner h2 {
+    color: #174e43;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.details-bottom-banner p {
+    color: #687a73;
+    font-size: 14px;
+}
+
+.details-bottom-banner a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 11px 22px;
+    background: #25816e;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Footer */
+
+.details-footer {
+    background: #174e43;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.details-footer h2 {
+    font-size: 19px;
+    margin-bottom: 7px;
+}
+
+.details-footer p {
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    .details-page {
+        width: 92%;
+        margin-top: 25px;
+    }
+
+    .details-heading h1 {
+        font-size: 26px;
+    }
+
+    .item-container > .feature-card,
+    .item-container > .item-card,
+    .item-container > .details-card {
+        padding: 16px;
+    }
+
+    .details-bottom-banner h2 {
+        font-size: 19px;
+    }
+}

@@ -1,134 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Swap Requests - ClothSwap</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swap-requests.css">
 </head>
 
-
-<body>
-
-
-    <!-- ==============================
-         NAVIGATION
-    =============================== -->
+<body class="app-page">
 
     <nav class="navbar">
-
-        <div class="logo">
-            ClothSwap
-        </div>
-
+        <div class="logo">ClothSwap</div>
 
         <div class="nav-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="listings.html">
-                Browse Clothes
-            </a>
-
-            <a href="dashboard.html">
-                Dashboard
-            </a>
-
-            <a href="swap-requests.html">
-                Swaps
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="listings.html">Browse Clothes</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="add-clothing.html">List Clothing</a>
         </div>
-
     </nav>
 
+    <main class="swaps-page">
 
+        <section class="swaps-hero">
+            <span>YOUR CLOTHES, YOUR CONNECTIONS</span>
+            <h1>Swap Requests</h1>
+            <p>
+                Manage your clothing exchanges, respond to requests,
+                and discover exciting new wardrobe possibilities.
+            </p>
+        </section>
 
-    <!-- ==============================
-         MAIN CONTENT
-    =============================== -->
+        <section class="swap-content">
 
-    <section class="features">
+            <div class="request-section">
 
-        <h1>
-            Swap Requests
-        </h1>
+                <div class="request-heading">
+                    <div>
+                        <span>REQUESTS FROM OTHERS</span>
+                        <h2>Incoming Requests</h2>
+                        <p>Review offers from people interested in your clothes.</p>
+                    </div>
+                    <div class="request-icon">📥</div>
+                </div>
 
-
-        <!-- ==============================
-             INCOMING REQUESTS
-        =============================== -->
-
-        <div>
-
-            <h2>
-                Incoming Requests
-            </h2>
-
-
-            <div id="incomingRequests">
-
-                <p>
-                    Loading incoming requests...
-                </p>
+                <div id="incomingRequests" class="request-list">
+                    <p class="loading-message">Loading incoming requests...</p>
+                </div>
 
             </div>
 
-        </div>
+            <div class="request-section">
 
+                <div class="request-heading">
+                    <div>
+                        <span>YOUR SWAP ACTIVITY</span>
+                        <h2>Sent Requests</h2>
+                        <p>Track the swap requests you have sent to others.</p>
+                    </div>
+                    <div class="request-icon">📤</div>
+                </div>
 
-
-        <br><br>
-
-
-
-        <!-- ==============================
-             SENT REQUESTS
-        =============================== -->
-
-        <div>
-
-            <h2>
-                Sent Requests
-            </h2>
-
-
-            <div id="sentRequests">
-
-                <p>
-                    Loading sent requests...
-                </p>
+                <div id="sentRequests" class="request-list">
+                    <p class="loading-message">Loading sent requests...</p>
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
+        <section class="swaps-bottom-banner">
+            <h2>Haven't found your perfect swap yet?</h2>
+            <p>Explore more clothes and find something special.</p>
+            <a href="listings.html">Browse Clothes</a>
+        </section>
 
-    </section>
+    </main>
 
-
-
-    <!-- ==============================
-         JAVASCRIPT
-    =============================== -->
+    <footer class="swaps-footer">
+        <h2>ClothSwap</h2>
+        <p>Swap more. Waste less. Style better.</p>
+        <p>© 2026 ClothSwap. All rights reserved.</p>
+    </footer>
 
     <script src="js/swap-requests.js"></script>
 
-
 </body>
-
 </html>
